@@ -28,10 +28,10 @@ function randomNotes(){
 }
 
 
-var ctx = new AudioContext();
-var soundFont = new Soundfont(ctx);
-var inst = soundFont.instrument('flute');
-var playnotes;
+var ctx = new AudioContext()
+var soundFont = new Soundfont(ctx)
+var inst = soundFont.instrument('flute')
+var playnotes = ['C4', 'E4', 'G4']
 
 document.getElementById('play').addEventListener("click", function(e) {
     document.getElementById('notes').innerHTML = '';
