@@ -15,7 +15,7 @@ function randomNotes(n){
     var a = []
     var i
     // MIDIノート番号からn個をランダム選択
-    for(i=0;i<18;i++){
+    for(i=0;i<22;i++){
 	a[i] = 60 + i // MIDIノート番号
     }
     // シャッフル
