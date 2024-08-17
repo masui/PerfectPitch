@@ -1,12 +1,14 @@
 //
-// Soundfont-playerを使って和音をランダムに再生
+// 絶対音感の練習のために和音をランダムに再生
+// Soundfont-playerを使う
 //
+
 var notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 var nums = ['-1', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 var notelist = []
-for(var i=0; i<11; i++){
-    for(var j=0; j<12; j++){ 
-	notelist[i*12+j] = notes[j] + nums[i]
+for(var i=0; i<notes.length; i++){
+    for(var j=0; j<nums.length; j++){ 
+	notelist[i*notes.length+j] = notes[j] + nums[i]
     }
 }
 
