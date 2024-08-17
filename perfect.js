@@ -5,7 +5,7 @@ var notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 var nums = ['-1', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 var notelist = [];
 for(var i=0; i<11; i++){
-    for(var j=0; j<12; j++){
+    for(var j=0; j<12; j++){ 
 	notelist[i*12+j] = notes[j] + nums[i];
     }
 }
@@ -35,23 +35,23 @@ var inst = soundFont.instrument('flute')
 var playnotes = ['C4', 'E4', 'G4']
 
 document.getElementById('play').addEventListener("click", function(e) {
-    document.getElementById('notes').innerHTML = '';
-    var l = randomNotes();
-    playnotes = [notelist[l[0]], notelist[l[1]], notelist[l[2]]];
-    var time = ctx.currentTime + 0.1;
-    inst.play(playnotes[0], time, 2.0);
-    inst.play(playnotes[1],time, 2.0);
-    inst.play(playnotes[2], time, 2.0);
+    document.getElementById('notes').innerHTML = ''
+    var l = randomNotes()
+    playnotes = [notelist[l[0]], notelist[l[1]], notelist[l[2]]]
+    var time = ctx.currentTime + 0.1
+    inst.play(playnotes[0], time, 2.0)
+    inst.play(playnotes[1],time, 2.0)
+    inst.play(playnotes[2], time, 2.0)
 });
 
 document.getElementById('again').addEventListener("click", function(e) {
-    document.getElementById('notes').innerHTML = '';
-    var time = ctx.currentTime + 0.1;
-    inst.play(playnotes[0], time, 2.0);
-    inst.play(playnotes[1],time, 2.0);
-    inst.play(playnotes[2], time, 2.0);
+    document.getElementById('notes').innerHTML = ''
+    var time = ctx.currentTime + 0.1
+    inst.play(playnotes[0], time, 2.0)
+    inst.play(playnotes[1],time, 2.0)
+    inst.play(playnotes[2], time, 2.0)
 });
 
 document.getElementById('show').addEventListener("click", function(e) {
-    document.getElementById('notes').innerHTML = playnotes.join(' ');;
+    document.getElementById('notes').innerHTML = playnotes.join(' ')
 });
