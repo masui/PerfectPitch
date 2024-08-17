@@ -39,18 +39,12 @@ document.getElementById('play').addEventListener("click", function(e) {
     showNotes('')
     var l = randomNotes()
     playNotes = [notelist[l[0]], notelist[l[1]], notelist[l[2]]]
-    var time = ctx.currentTime + 0.1
-    inst.play(playNotes[0], time, 2.0)
-    inst.play(playNotes[1],time, 2.0)
-    inst.play(playNotes[2], time, 2.0)
+    play()
 })
 
 document.getElementById('again').addEventListener("click", function(e) {
     showNotes('')
-    var time = ctx.currentTime + 0.1
-    inst.play(playNotes[0], time, 2.0)
-    inst.play(playNotes[1],time, 2.0)
-    inst.play(playNotes[2], time, 2.0)
+    play()
 })
 
 document.getElementById('show').addEventListener("click", function(e) {
@@ -59,4 +53,11 @@ document.getElementById('show').addEventListener("click", function(e) {
 
 function showNotes(s){
     document.getElementById('notes').innerHTML = s
+}
+
+function play(){
+    var time = ctx.currentTime + 0.1
+    inst.play(playNotes[0], time, 2.0)
+    inst.play(playNotes[1],time, 2.0)
+    inst.play(playNotes[2], time, 2.0)
 }
