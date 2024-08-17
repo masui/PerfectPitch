@@ -1,12 +1,12 @@
 //
 // Soundfont-playerを使って和音をランダムに再生
 //
-var notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-var nums = ['-1', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-var notelist = [];
+var notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
+var nums = ['-1', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+var notelist = []
 for(var i=0; i<11; i++){
     for(var j=0; j<12; j++){ 
-	notelist[i*12+j] = notes[j] + nums[i];
+	notelist[i*12+j] = notes[j] + nums[i]
     }
 }
 
@@ -16,7 +16,7 @@ function randomNotes(n){
     var i
     // MIDIノート番号からn個をランダム選択
     for(i=0;i<18;i++){
-	a[i] = 60 + i; // MIDIノート番号
+	a[i] = 60 + i // MIDIノート番号
     }
     // シャッフル
     for(i = a.length - 1; i > 0; i--){
@@ -25,7 +25,6 @@ function randomNotes(n){
 	a[i] = a[r]
 	a[r] = tmp
     }
-    console.log(n)
     return a.slice(0,n).sort()
 }
 
@@ -42,7 +41,7 @@ document.getElementById('play').addEventListener("click", function(e) {
     inst.play(playnotes[0], time, 2.0)
     inst.play(playnotes[1],time, 2.0)
     inst.play(playnotes[2], time, 2.0)
-});
+})
 
 document.getElementById('again').addEventListener("click", function(e) {
     document.getElementById('notes').innerHTML = ''
@@ -50,8 +49,8 @@ document.getElementById('again').addEventListener("click", function(e) {
     inst.play(playnotes[0], time, 2.0)
     inst.play(playnotes[1],time, 2.0)
     inst.play(playnotes[2], time, 2.0)
-});
+})
 
 document.getElementById('show').addEventListener("click", function(e) {
     document.getElementById('notes').innerHTML = playnotes.join(' ')
-});
+})
