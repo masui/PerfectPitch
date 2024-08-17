@@ -12,8 +12,8 @@ for(var i=0; i<11; i++){
 
 function randomNotes(n){
     if(!n) n = 2
-    var a = [];
-    var i;
+    var a = []
+    var i
     // MIDIノート番号からいくつかをランダム選択
     for(i=0;i<18;i++){
 	a[i] = 60 + i; // MIDIノート番号
@@ -25,9 +25,9 @@ function randomNotes(n){
 	a[i] = a[r]
 	a[r] = tmp
     }
+    console.log(n)
     return a.slice(0,n).sort()
 }
-
 
 var ctx = new AudioContext()
 var soundFont = new Soundfont(ctx)
