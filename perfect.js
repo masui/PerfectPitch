@@ -13,7 +13,7 @@ for(var i=0; i<notes.length; i++){
 }
 
 function randomNotes(n){
-    if(!n){ n = 3 }
+    if(!n){ n = 3 } // デフォルトは3音
     var a = []
     var i
     // MIDIノート番号からn個をランダム選択
@@ -33,26 +33,30 @@ function randomNotes(n){
 var ctx = new AudioContext()
 var soundFont = new Soundfont(ctx)
 var inst = soundFont.instrument('flute')
-var playnotes = ['C4', 'E4', 'G4']
+var playNotes = ['C4', 'E4', 'G4']
 
 document.getElementById('play').addEventListener("click", function(e) {
-    document.getElementById('notes').innerHTML = ''
+    showNotes('')
     var l = randomNotes()
-    playnotes = [notelist[l[0]], notelist[l[1]], notelist[l[2]]]
+    playNotes = [notelist[l[0]], notelist[l[1]], notelist[l[2]]]
     var time = ctx.currentTime + 0.1
-    inst.play(playnotes[0], time, 2.0)
-    inst.play(playnotes[1],time, 2.0)
-    inst.play(playnotes[2], time, 2.0)
+    inst.play(playNotes[0], time, 2.0)
+    inst.play(playNotes[1],time, 2.0)
+    inst.play(playNotes[2], time, 2.0)
 })
 
 document.getElementById('again').addEventListener("click", function(e) {
-    document.getElementById('notes').innerHTML = ''
+    showNotes('')
     var time = ctx.currentTime + 0.1
-    inst.play(playnotes[0], time, 2.0)
-    inst.play(playnotes[1],time, 2.0)
-    inst.play(playnotes[2], time, 2.0)
+    inst.play(playNotes[0], time, 2.0)
+    inst.play(playNotes[1],time, 2.0)
+    inst.play(playNotes[2], time, 2.0)
 })
 
 document.getElementById('show').addEventListener("click", function(e) {
-    document.getElementById('notes').innerHTML = playnotes.join(' ')
+    showNotes(playNotes.join(' '))
 })
+
+function showNotes(s){
+    document.getElementById('notes').innerHTML = s
+}
