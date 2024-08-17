@@ -11,7 +11,7 @@ for(var i=0; i<11; i++){
 }
 
 function randomNotes(n){
-    if(!n){ n = 2 }
+    if(!n){ n = 3 }
     var a = []
     var i
     // MIDIノート番号からいくつかをランダム選択
