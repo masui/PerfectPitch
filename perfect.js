@@ -11,7 +11,7 @@ for(var i=0; i<11; i++){
 }
 
 function randomNotes(n){
-    if(n == undefined) n = 2
+    if(!n) n = 2
     var a = [];
     var i;
     // MIDIノート番号からいくつかをランダム選択
@@ -20,12 +20,12 @@ function randomNotes(n){
     }
     // シャッフル
     for(i = a.length - 1; i > 0; i--){
-	var r = Math.floor(Math.random() * (i + 1));
-	var tmp = a[i];
-	a[i] = a[r];
-	a[r] = tmp;
+	var r = Math.floor(Math.random() * (i + 1))
+	var tmp = a[i]
+	a[i] = a[r]
+	a[r] = tmp
     }
-    return a.slice(0,n).sort();
+    return a.slice(0,n).sort()
 }
 
 
