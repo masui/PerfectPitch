@@ -25,7 +25,7 @@ function randomNotes(n){
 	a[i] = a[r];
 	a[r] = tmp;
     }
-    return a.slice(0,n.sort();
+    return a.slice(0,n).sort();
 }
 
 
