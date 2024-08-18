@@ -24,6 +24,7 @@ function randomNotes(n){
     // シャッフル
     for(i = a.length - 1; i > 0; i--){
 	var r = Math.floor(Math.random() * (i + 1))
+	alert(r)
 	// [a[i], a[r]] = [a[r], a[i]] // swap
 	var tmp = a[i]
 	a[i] = a[r]
