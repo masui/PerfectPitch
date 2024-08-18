@@ -19,17 +19,15 @@ function randomNotes(n){
     var a = []
     var i
     for(i=0;i<26;i++){
-	a[i] = 56 + i // MIDIノート番号
+	a[i] = 55 + i // MIDIノート番号
     }
     // シャッフル
     for(i = a.length - 1; i > 0; i--){
 	var r = Math.floor(Math.random() * (i + 1))
-	[a[i], a[r]] = [a[r], a[i]] // swap
-	/*
+	// [a[i], a[r]] = [a[r], a[i]] // swap
 	var tmp = a[i]
 	a[i] = a[r]
 	a[r] = tmp
-	*/
     }
     return a.slice(0,n).sort()
 }
