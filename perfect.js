@@ -24,10 +24,7 @@ function randomNotes(n){
     // シャッフル
     for(i = a.length - 1; i > 0; i--){
 	var r = Math.floor(Math.random() * (i + 1))
-	[a[i], a[r]] = [a[r], a[i]]
-	//var tmp = a[i]
-	//a[i] = a[r]
-	//a[r] = tmp
+	[a[i], a[r]] = [a[r], a[i]] // swap
     }
     return a.slice(0,n).sort()
 }
