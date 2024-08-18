@@ -13,13 +13,13 @@ for(var i=0; i<notes.length; i++){
     }
 }
 
+// MIDIノート番号からn個をランダム選択
 function randomNotes(n){
     if(!n){ n = 3 } // デフォルトは3音
     var a = []
     var i
-    // MIDIノート番号からn個をランダム選択
-    for(i=0;i<22;i++){
-	a[i] = 60 + i // MIDIノート番号
+    for(i=0;i<26;i++){
+	a[i] = 56 + i // MIDIノート番号
     }
     // シャッフル
     for(i = a.length - 1; i > 0; i--){
@@ -50,7 +50,7 @@ document.getElementById('show').addEventListener("click", function(e) {
     showNotes(playNotes.join(' '))
 })
 
-function showNotes(s){
+function showNotes(s){ // 音を表示
     document.getElementById('notes').innerHTML = s
 }
 
