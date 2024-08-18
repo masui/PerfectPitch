@@ -1,6 +1,7 @@
 //
 // 絶対音感の練習のために和音をランダムに再生
 // Soundfont-playerを使う
+// Toshiyuki Masui 2024/8/17
 //
 
 var notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
@@ -23,9 +24,12 @@ function randomNotes(n){
     // シャッフル
     for(i = a.length - 1; i > 0; i--){
 	var r = Math.floor(Math.random() * (i + 1))
+	[a[i], a[r]] = [a[r], a[i]]
+	/*
 	var tmp = a[i]
 	a[i] = a[r]
 	a[r] = tmp
+	*/
     }
     return a.slice(0,n).sort()
 }
@@ -58,6 +62,6 @@ function showNotes(s){
 function play(){
     var time = ctx.currentTime + 0.1
     inst.play(playNotes[0], time, 2.0)
-    inst.play(playNotes[1],time, 2.0)
+    inst.play(playNotes[1], time, 2.0)
     inst.play(playNotes[2], time, 2.0)
 }
