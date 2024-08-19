@@ -35,7 +35,7 @@ function randomNotes(n){
 
 var ctx = new AudioContext()
 var soundFont = new Soundfont(ctx)
-var inst = soundFont.instrument('flute')
+var instrument = 'flute'
 var playNotes = ['C4', 'E4', 'G4']
 
 document.getElementById('play').addEventListener("click", function(e) {
@@ -44,15 +44,19 @@ document.getElementById('play').addEventListener("click", function(e) {
     playNotes = [notelist[l[0]], notelist[l[1]], notelist[l[2]]]
 
     var instrumentMenu = document.getElementById("instruments")
-    const num = instrumentMenu.selectedIndex
-    const instrument = instrumentMenu.options[num].innerText
-    alert(instrument)
+    var num = instrumentMenu.selectedIndex
+    instrument = instrumentMenu.options[num].innerText
 
     play()
 })
 
 document.getElementById('again').addEventListener("click", function(e) {
     showNotes('')
+
+    var instrumentMenu = document.getElementById("instruments")
+    var num = instrumentMenu.selectedIndex
+    instrument = instrumentMenu.options[num].innerText
+
     play()
 })
 
@@ -65,6 +69,7 @@ function showNotes(s){ // 音を表示
 }
 
 function play(){
+    inst = soundFont.instrument(instrument)
     var time = ctx.currentTime + 0.1
     inst.play(playNotes[0], time, 2.0)
     inst.play(playNotes[1], time, 2.0)
