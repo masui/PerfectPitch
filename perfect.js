@@ -45,6 +45,7 @@ document.getElementById('play').addEventListener("click", function(e) {
 
     var instrumentMenu = document.getElementById("instruments")
     var num = instrumentMenu.selectedIndex
+    alert(num)
     instrument = instrumentMenu.options[num].innerText
     alert(instrument)
 
