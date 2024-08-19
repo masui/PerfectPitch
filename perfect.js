@@ -35,7 +35,7 @@ function randomNotes(n){
 
 var ctx = new AudioContext()
 var soundFont = new Soundfont(ctx)
-var instrument = 'flute'
+//var instrument = 'flute'
 var playNotes = ['C4', 'E4', 'G4']
 
 var inst = soundFont.instrument('flute')
