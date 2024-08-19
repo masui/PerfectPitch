@@ -7,6 +7,7 @@
 var notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 var nums = ['-1', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 var notelist = []
+var nnotes = 3
 for(var i=0; i<notes.length; i++){
     for(var j=0; j<nums.length; j++){ 
 	notelist[i*notes.length+j] = notes[j] + nums[i]
@@ -14,7 +15,7 @@ for(var i=0; i<notes.length; i++){
 }
 
 // MIDIノート番号からn個をランダム選択
-function randomNotes(n){
+function randomotes(n){
     if(!n){ n = 3 } // デフォルトは3音
     var a = []
     var i
@@ -36,20 +37,21 @@ function randomNotes(n){
 var ctx = new AudioContext()
 var soundFont = new Soundfont(ctx)
 //var instrument = 'flute'
-var playNotes = ['C4', 'E4', 'G4']
+var playNotes = ['C4', 'E4', 'G4', 'A4', 'C5']
 
 //var inst = soundFont.instrument('flute')
 
 document.getElementById('play').addEventListener("click", function(e) {
     showNotes('')
     var l = randomNotes()
-    playNotes = [notelist[l[0]], notelist[l[1]], notelist[l[2]]]
+    playNotes = []
+    for(var i=0;i<nnotes;i++){
+	playNotes.push(notelist[l[i]])
+    }
 
     var instrumentMenu = document.getElementById("instruments")
     var num = instrumentMenu.selectedIndex
-    //alert(num)
     instrument = instrumentMenu.options[num].innerText
-    //alert(instrument)
 
     play()
 })
@@ -78,8 +80,8 @@ function play(){
     //var inst = soundFont.instrument('flute')
     Soundfont.instrument(ctx, instrument).then(function (inst) {
 	var time = ctx.currentTime + 0.1
-	inst.play(playNotes[0], time, 2.0)
-	inst.play(playNotes[1], time, 2.0)
-	inst.play(playNotes[2], time, 2.0)
+	for(var i=0;i<nnotes;i++){
+	    inst.play(playNotes[i], time, 2.0)
+	}
     })
 }
