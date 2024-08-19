@@ -45,7 +45,7 @@ document.getElementById('play').addEventListener("click", function(e) {
 
     var instrumentMenu = document.getElementById("instruments")
     const num = instrumentMenu.selectedIndex
-    const instrument = selectSport.options[num].innerText
+    const instrument = instrumentMenu.options[num].innerText
     alert(instrument)
 
     play()
