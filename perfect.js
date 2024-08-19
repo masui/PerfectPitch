@@ -15,7 +15,7 @@ for(var i=0; i<notes.length; i++){
 }
 
 // MIDIノート番号からn個をランダム選択
-function randomotes(n){
+function randomNotes(n){
     if(!n){ n = 3 } // デフォルトは3音
     var a = []
     var i
