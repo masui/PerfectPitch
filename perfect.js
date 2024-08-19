@@ -42,6 +42,12 @@ document.getElementById('play').addEventListener("click", function(e) {
     showNotes('')
     var l = randomNotes()
     playNotes = [notelist[l[0]], notelist[l[1]], notelist[l[2]]]
+
+    var instrumentMenu = document.getElementById("instruments")
+    const num = instrumentMenu.selectedIndex
+    const instrument = selectSport.options[num].innerText
+    alert(instrument)
+
     play()
 })
 
