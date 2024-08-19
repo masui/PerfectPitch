@@ -73,6 +73,7 @@ function showNotes(s){ // 音を表示
 function play(){
     alert(`play: ${instrument}`)
     var inst = soundFont.instrument(instrument)
+    alert(inst)
     var time = ctx.currentTime + 0.1
     inst.play(playNotes[0], time, 2.0)
     inst.play(playNotes[1], time, 2.0)
