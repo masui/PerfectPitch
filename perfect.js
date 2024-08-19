@@ -38,7 +38,7 @@ var soundFont = new Soundfont(ctx)
 //var instrument = 'flute'
 var playNotes = ['C4', 'E4', 'G4']
 
-var inst = soundFont.instrument('flute')
+//var inst = soundFont.instrument('flute')
 
 document.getElementById('play').addEventListener("click", function(e) {
     showNotes('')
@@ -76,7 +76,8 @@ function play(){
     //alert(`play: ${instrument}`)
     //var inst = soundFont.instrument(instrument)
     //var inst = soundFont.instrument('flute')
-    soundFont.instrument(ctx, instrument).then(function (inst) {
+    //soundFont.instrument(ctx, instrument).then(function (inst) {
+    soundFont.instrument(instrument).then(function(inst){
 	var time = ctx.currentTime + 0.1
 	inst.play(playNotes[0], time, 2.0)
 	inst.play(playNotes[1], time, 2.0)
