@@ -8,8 +8,8 @@ const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 const nums = ['-1', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 const notelist = []
 var nnotes = 3
-for(var i=0; i<notes.length; i++){
-    for(var j=0; j<nums.length; j++){ 
+for(var i=0; i<nums.length; i++){ 
+    for(var j=0; j<notes.length; j++){
 	notelist[i*notes.length+j] = notes[j] + nums[i]
     }
 }
@@ -49,10 +49,26 @@ document.getElementById('nnotes').addEventListener("change", function(e) {
 
 document.getElementById('play').addEventListener("click", function(e) {
     showNotes('')
-    var l = randomNotes()
-    playNotes = []
-    for(var i=0;i<nnotes;i++){
-	playNotes.push(notelist[l[i]])
+    while(true){
+        var l = randomNotes()
+    	playNotes = []
+	for(var i=0;i<nnotes;i++){
+	    playNotes.push(notelist[l[i]])
+	}
+        // 同じ音が出ないように工夫
+	var dup = {}
+	var count = 0
+	for(var i=0;i<nnotes;i++){
+	    //alert(playNotes[i])
+	    var c = playNotes[i].match(/^(.*)\d+$/)[1]
+	    //alert(c)
+	    if(dup[c]){
+		count += 1
+            }
+	    dup[c] = true
+        }
+	//alert(`count = ${count}`)
+        if(count == 0) break
     }
     play()
 })
