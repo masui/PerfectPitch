@@ -33,7 +33,7 @@ function randomNotes(){
     return a.slice(0,nnotes).sort()
 }
 
-var instrument = 'flute'
+var instrument = 'electric_piano_1'
 var ctx = new AudioContext()
 var soundFont = new Soundfont(ctx)
 var playNotes = ['C4', 'E4', 'G4', 'A4', 'C5']
