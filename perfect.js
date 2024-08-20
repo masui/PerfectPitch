@@ -4,9 +4,9 @@
 // Toshiyuki Masui 2024/8/17
 //
 
-var notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
-var nums = ['-1', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-var notelist = []
+const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
+const nums = ['-1', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+const notelist = []
 var nnotes = 3
 for(var i=0; i<notes.length; i++){
     for(var j=0; j<nums.length; j++){ 
@@ -14,9 +14,8 @@ for(var i=0; i<notes.length; i++){
     }
 }
 
-// MIDIノート番号からn個をランダム選択
-function randomNotes(n){
-    if(!n){ n = 3 } // デフォルトは3音
+// MIDIノート番号からnnotes個をランダム選択
+function randomNotes(){
     var a = []
     var i
     for(i=0;i<26;i++){
@@ -31,15 +30,22 @@ function randomNotes(n){
 	a[i] = a[r]
 	a[r] = tmp
     }
-    return a.slice(0,n).sort()
+    return a.slice(0,nnotes).sort()
 }
 
+var instrument = 'flute'
 var ctx = new AudioContext()
 var soundFont = new Soundfont(ctx)
-//var instrument = 'flute'
 var playNotes = ['C4', 'E4', 'G4', 'A4', 'C5']
 
 //var inst = soundFont.instrument('flute')
+
+document.getElementById('instruments').addEventListener("change", function(e) {
+    instrument = e.target.value
+})
+document.getElementById('nnotes').addEventListener("change", function(e) {
+    nnotes = parseInt(e.target.value)
+})
 
 document.getElementById('play').addEventListener("click", function(e) {
     showNotes('')
@@ -48,21 +54,11 @@ document.getElementById('play').addEventListener("click", function(e) {
     for(var i=0;i<nnotes;i++){
 	playNotes.push(notelist[l[i]])
     }
-
-    var instrumentMenu = document.getElementById("instruments")
-    var num = instrumentMenu.selectedIndex
-    instrument = instrumentMenu.options[num].innerText
-
     play()
 })
 
 document.getElementById('again').addEventListener("click", function(e) {
     showNotes('')
-
-    var instrumentMenu = document.getElementById("instruments")
-    var num = instrumentMenu.selectedIndex
-    instrument = instrumentMenu.options[num].innerText
-
     play()
 })
 
@@ -75,9 +71,6 @@ function showNotes(s){ // 音を表示
 }
 
 function play(){
-    //alert(`play: ${instrument}`)
-    //var inst = soundFont.instrument(instrument)
-    //var inst = soundFont.instrument('flute')
     Soundfont.instrument(ctx, instrument).then(function (inst) {
 	var time = ctx.currentTime + 0.1
 	for(var i=0;i<nnotes;i++){
