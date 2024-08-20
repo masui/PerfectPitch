@@ -44,11 +44,14 @@ document.getElementById('instruments').addEventListener("change", function(e) {
     instrument = e.target.value
 })
 document.getElementById('nnotes').addEventListener("change", function(e) {
+    showNotes('')
+    document.getElementById('show').style.display = 'inline'
     nnotes = parseInt(e.target.value)
 })
 
 document.getElementById('play').addEventListener("click", function(e) {
     showNotes('')
+    document.getElementById('show').style.display = 'inline'
     while(true){
         var l = randomNotes()
     	playNotes = []
@@ -74,11 +77,12 @@ document.getElementById('play').addEventListener("click", function(e) {
 })
 
 document.getElementById('again').addEventListener("click", function(e) {
-    showNotes('')
+    // showNotes('')
     play()
 })
 
 document.getElementById('show').addEventListener("click", function(e) {
+    document.getElementById('show').style.display = 'none'
     showNotes(playNotes.join(' '))
 })
 
