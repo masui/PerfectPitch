@@ -38,19 +38,23 @@ var ctx = new AudioContext()
 var soundFont = new Soundfont(ctx)
 var playNotes = ['C4', 'E4', 'G4', 'A4', 'C5']
 
-document.querySelector('#instruments').addEventListener("change", function(e) {
+function $(x){
+    return document.querySelector(x)
+}
+
+$('#instruments').addEventListener("change", function(e) {
     instrument = e.target.value
 })
 
-document.querySelector('#nnotes').addEventListener("change", function(e) {
+$('#nnotes').addEventListener("change", function(e) {
     showNotes('')
-    document.querySelector('#show').style.display = 'inline'
+    $('#show').style.display = 'inline'
     nnotes = parseInt(e.target.value)
 })
 
-document.querySelector('#play').addEventListener("click", function(e) {
+$('#play').addEventListener("click", function(e) {
     showNotes('')
-    document.querySelector('#show').style.display = 'inline'
+    $('#show').style.display = 'inline'
     while(true){
         var l = randomNotes()
     	playNotes = []
@@ -61,31 +65,28 @@ document.querySelector('#play').addEventListener("click", function(e) {
 	var dup = {}
 	var count = 0
 	for(var i=0;i<nnotes;i++){
-	    //alert(playNotes[i])
 	    var c = playNotes[i].match(/^(.*)\d+$/)[1]
-	    //alert(c)
 	    if(dup[c]){
 		count += 1
             }
 	    dup[c] = true
         }
-	//alert(`count = ${count}`)
         if(count == 0) break
     }
     play()
 })
 
-document.querySelector('#again').addEventListener("click", function(e) {
+$('#again').addEventListener("click", function(e) {
     play()
 })
 
-document.querySelector('#show').addEventListener("click", function(e) {
-    document.querySelector('#show').style.display = 'none'
+$('#show').addEventListener("click", function(e) {
+    $('#show').style.display = 'none'
     showNotes(playNotes.join(' '))
 })
 
 function showNotes(s){ // 音を表示
-    document.querySelector('#notes').textContent = s
+    $('#notes').textContent = s
 }
 
 function play(){
