@@ -40,18 +40,23 @@ var playNotes = ['C4', 'E4', 'G4', 'A4', 'C5']
 
 //var inst = soundFont.instrument('flute')
 
-document.getElementById('instruments').addEventListener("change", function(e) {
+//document.getElementById('instruments').addEventListener("change", function(e) {
+document.querySelector('#instruments').addEventListener("change", function(e) {
     instrument = e.target.value
 })
-document.getElementById('nnotes').addEventListener("change", function(e) {
+//document.getElementById('nnotes').addEventListener("change", function(e) {
+document.querySelector('#nnotes').addEventListener("change", function(e) {
     showNotes('')
-    document.getElementById('show').style.display = 'inline'
+    //document.getElementById('show').style.display = 'inline'
+    document.querySelector('#show').style.display = 'inline'
     nnotes = parseInt(e.target.value)
 })
 
-document.getElementById('play').addEventListener("click", function(e) {
+//document.getElementById('play').addEventListener("click", function(e) {
+document.querySelector('#play').addEventListener("click", function(e) {
     showNotes('')
-    document.getElementById('show').style.display = 'inline'
+    //document.getElementById('show').style.display = 'inline'
+    document.querySelector('#show').style.display = 'inline'
     while(true){
         var l = randomNotes()
     	playNotes = []
@@ -76,18 +81,22 @@ document.getElementById('play').addEventListener("click", function(e) {
     play()
 })
 
-document.getElementById('again').addEventListener("click", function(e) {
+//document.getElementById('again').addEventListener("click", function(e) {
+document.querySelector('#again').addEventListener("click", function(e) {
     // showNotes('')
     play()
 })
 
-document.getElementById('show').addEventListener("click", function(e) {
-    document.getElementById('show').style.display = 'none'
+//document.getElementById('show').addEventListener("click", function(e) {
+document.querySelector('#show').addEventListener("click", function(e) {
+    //document.getElementById('show').style.display = 'none'
+    document.querySelector('#show').style.display = 'none'
     showNotes(playNotes.join(' '))
 })
 
 function showNotes(s){ // 音を表示
-    document.getElementById('notes').innerHTML = s
+    //document.getElementById('notes').innerHTML = s
+    document.querySelector('#notes').textContent = s
 }
 
 function play(){
